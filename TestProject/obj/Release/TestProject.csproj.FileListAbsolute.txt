@@ -1,0 +1,12 @@
+D:\study\C#\AppUnits\TestProject\bin\Release\TestProject.exe.config
+D:\study\C#\AppUnits\TestProject\bin\Release\TestProject.exe
+D:\study\C#\AppUnits\TestProject\bin\Release\TestProject.pdb
+D:\study\C#\AppUnits\TestProject\bin\Release\EntityFramework.dll
+D:\study\C#\AppUnits\TestProject\bin\Release\EntityFramework.SqlServer.dll
+D:\study\C#\AppUnits\TestProject\bin\Release\Quiz.dll
+D:\study\C#\AppUnits\TestProject\bin\Release\EntityFramework.xml
+D:\study\C#\AppUnits\TestProject\bin\Release\EntityFramework.SqlServer.xml
+D:\study\C#\AppUnits\TestProject\bin\Release\Quiz.pdb
+D:\study\C#\AppUnits\TestProject\obj\Release\TestProject.csprojResolveAssemblyReference.cache
+D:\study\C#\AppUnits\TestProject\obj\Release\TestProject.exe
+D:\study\C#\AppUnits\TestProject\obj\Release\TestProject.pdb

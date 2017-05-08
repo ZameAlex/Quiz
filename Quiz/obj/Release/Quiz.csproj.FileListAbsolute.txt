@@ -1,0 +1,10 @@
+D:\study\C#\AppUnits\Quiz\bin\Release\Quiz.dll.config
+D:\study\C#\AppUnits\Quiz\bin\Release\Quiz.dll
+D:\study\C#\AppUnits\Quiz\bin\Release\Quiz.pdb
+D:\study\C#\AppUnits\Quiz\bin\Release\EntityFramework.dll
+D:\study\C#\AppUnits\Quiz\bin\Release\EntityFramework.SqlServer.dll
+D:\study\C#\AppUnits\Quiz\bin\Release\EntityFramework.xml
+D:\study\C#\AppUnits\Quiz\bin\Release\EntityFramework.SqlServer.xml
+D:\study\C#\AppUnits\Quiz\obj\Release\Quiz.csprojResolveAssemblyReference.cache
+D:\study\C#\AppUnits\Quiz\obj\Release\Quiz.dll
+D:\study\C#\AppUnits\Quiz\obj\Release\Quiz.pdb

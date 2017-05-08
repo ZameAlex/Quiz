@@ -1,0 +1,9 @@
+D:\study\C#\AppUnits\TestProject\bin\Debug\TestProject.exe.config
+D:\study\C#\AppUnits\TestProject\bin\Debug\TestProject.exe
+D:\study\C#\AppUnits\TestProject\bin\Debug\TestProject.pdb
+D:\study\C#\AppUnits\TestProject\bin\Debug\EntityFramework.dll
+D:\study\C#\AppUnits\TestProject\bin\Debug\EntityFramework.SqlServer.dll
+D:\study\C#\AppUnits\TestProject\bin\Debug\EntityFramework.xml
+D:\study\C#\AppUnits\TestProject\bin\Debug\EntityFramework.SqlServer.xml
+D:\study\C#\AppUnits\TestProject\obj\Debug\TestProject.exe
+D:\study\C#\AppUnits\TestProject\obj\Debug\TestProject.pdb

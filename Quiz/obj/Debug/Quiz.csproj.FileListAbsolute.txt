@@ -1,0 +1,9 @@
+D:\study\C#\AppUnits\Quiz\bin\Debug\Quiz.dll.config
+D:\study\C#\AppUnits\Quiz\bin\Debug\Quiz.dll
+D:\study\C#\AppUnits\Quiz\bin\Debug\Quiz.pdb
+D:\study\C#\AppUnits\Quiz\bin\Debug\EntityFramework.dll
+D:\study\C#\AppUnits\Quiz\bin\Debug\EntityFramework.SqlServer.dll
+D:\study\C#\AppUnits\Quiz\bin\Debug\EntityFramework.xml
+D:\study\C#\AppUnits\Quiz\bin\Debug\EntityFramework.SqlServer.xml
+D:\study\C#\AppUnits\Quiz\obj\Debug\Quiz.dll
+D:\study\C#\AppUnits\Quiz\obj\Debug\Quiz.pdb
