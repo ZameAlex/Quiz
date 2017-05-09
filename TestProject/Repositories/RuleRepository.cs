@@ -1,10 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using TestProject.Models;
+using AnsweringQuizes.AnsweringRepositories;
 
 namespace TestProject.Repositories
 {
-    public static class RuleRepository
+    public class RuleRepository : IRepository<Rule>
     {
         private static Models.Rule ConvertingFromDB(NextQuestion rule)
         {
@@ -32,7 +34,7 @@ namespace TestProject.Repositories
         }
 
 
-        public static void SaveItems(ICollection<Models.Rule> rules,int ID)
+        public void SaveItems(ICollection<Models.Rule> rules,int ID)
         {
             ICollection<NextQuestion> result = new List<NextQuestion>();
             foreach(Models.Rule item in rules)
@@ -55,7 +57,7 @@ namespace TestProject.Repositories
             }
         }
 
-        public static int SaveItem(Models.Rule rule, int ID)
+        public int SaveItem(Models.Rule rule, int ID)
         {
             NextQuestion result = ConvertingToDB(rule, ID);
             using (QuizEntities DbContext = new QuizEntities())
@@ -67,7 +69,7 @@ namespace TestProject.Repositories
             }
         }
 
-        public static Rule GetItem(int ID, int QuestionID)
+        public Rule GetItem(int ID, int QuestionID)
         {
             Rule result = new Rule();
             using (QuizEntities DbContext = new QuizEntities())
@@ -77,7 +79,7 @@ namespace TestProject.Repositories
             return result;
         }
 
-        public static ICollection<Rule> GetItems(int ID)
+        public ICollection<Rule> GetItems(int ID)
         {
             List<NextQuestion> rules = new List<NextQuestion>();
             using (QuizEntities DbContext = new QuizEntities())
@@ -92,7 +94,7 @@ namespace TestProject.Repositories
             return result;
         }
 
-        public static void DeleteItem(Rule rule, int ID)
+        public void DeleteItem(Rule rule, int ID)
         {
             using (QuizEntities DbContext = new QuizEntities())
             {
@@ -101,7 +103,7 @@ namespace TestProject.Repositories
             }
         }
 
-        public static void UpdateItem(Rule newRule, int ID)
+        public void UpdateItem(Rule newRule, int ID)
         {
             using (QuizEntities DbContext = new QuizEntities())
             {
@@ -113,6 +115,11 @@ namespace TestProject.Repositories
                 DbContext.Entry(rule).State = System.Data.Entity.EntityState.Modified;
                 DbContext.SaveChanges();
             }
+        }
+
+        public void Dispose()
+        {
+            throw new NotImplementedException();
         }
     }
 }

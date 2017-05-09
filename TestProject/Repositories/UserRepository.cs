@@ -1,10 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using TestProject.Models;
+using AnsweringQuizes.AnsweringRepositories;
 
 namespace TestProject.Repositories
 {
-    public static class UserRepository
+    public class UserRepository : IRepository<Models.User>
     {
         private static Models.User ConvertingFromDB(Users user)
         {
@@ -13,7 +15,11 @@ namespace TestProject.Repositories
             result.Login = user.Login;
             result.Password = user.Password;
             result.Role = user.Role;
-            result.Quizes = QuizRepository.GetItems(user.ID);
+            using (QuizRepository q = new QuizRepository())
+            {
+                result.Quizes = q.GetItems(user.ID);
+            }
+            
             return result;
         }
         private static Users ConvertingToDB(Models.User user)
@@ -28,7 +34,7 @@ namespace TestProject.Repositories
         }
 
 
-        public static void SaveItems(ICollection<Models.User> users)
+        public void SaveItems(ICollection<Models.User> users,int id)
         {
             ICollection<Users> result = new List<Users>();
             foreach(Models.User item in users)
@@ -44,7 +50,7 @@ namespace TestProject.Repositories
             }
         }
 
-        public static int SaveItem(Models.User user)
+        public int SaveItem(Models.User user,int id)
         {
             Users result = ConvertingToDB(user);
             using (QuizEntities DbContext = new QuizEntities())
@@ -56,7 +62,7 @@ namespace TestProject.Repositories
             }
         }
 
-        public static User GetItem(int ID)
+        public User GetItem(int ID,int id)
         {
             User result = new User();
             using (QuizEntities DbContext = new QuizEntities())
@@ -66,7 +72,7 @@ namespace TestProject.Repositories
             return result;
         }
 
-        public static ICollection<User> GetItems()
+        public ICollection<User> GetItems(int id)
         {
             List<Users> users = new List<Users>();
             using (QuizEntities DbContext = new QuizEntities())
@@ -81,7 +87,7 @@ namespace TestProject.Repositories
             return result;
         }
 
-        public static void DeleteItem(User user)
+        public void DeleteItem(User user,int id)
         {
             using (QuizEntities DbContext = new QuizEntities())
             {
@@ -90,7 +96,7 @@ namespace TestProject.Repositories
             }
         }
 
-        public static void UpdateItem(User newUser, int ID)
+        public void UpdateItem(User newUser, int ID)
         {
             using (QuizEntities DbContext = new QuizEntities())
             {
@@ -101,6 +107,11 @@ namespace TestProject.Repositories
                 DbContext.Entry(user).State = System.Data.Entity.EntityState.Modified;
                 DbContext.SaveChanges();
             }
+        }
+
+        public void Dispose()
+        {
+            throw new NotImplementedException();
         }
     }
 }

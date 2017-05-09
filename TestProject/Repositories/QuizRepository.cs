@@ -1,16 +1,22 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using AnsweringQuizes.AnsweringRepositories;
 
 namespace TestProject.Repositories
 {
-    public static class QuizRepository
+    public class QuizRepository : IRepository<Models.Quiz>
     {
         private static Models.Quiz ConvertingFromDB(Questionare questionare)
         {
             Models.Quiz result = new Models.Quiz();
             result.DBID = questionare.ID;
             result.Name = questionare.Name;
-            result.Questions = QuestionRepository.GetItems(questionare.ID);
+            using (QuestionRepository qr = new QuestionRepository())
+            {
+                result.Questions = qr.GetItems(questionare.ID);
+            }
+            
             result.URL = questionare.URL;
             return result;
         }
@@ -25,7 +31,7 @@ namespace TestProject.Repositories
         }
 
 
-        public static void SaveItems(ICollection<Models.Quiz> questionares, int ID)
+        public void SaveItems(ICollection<Models.Quiz> questionares, int ID)
         {
             ICollection<Questionare> result = new List<Questionare>();
             foreach (Models.Quiz item in questionares)
@@ -41,7 +47,7 @@ namespace TestProject.Repositories
             }
         }
 
-        public static int SaveItem(Models.Quiz questionare, int ID)
+        public int SaveItem(Models.Quiz questionare, int ID)
         {
             Questionare result = ConvertingToDB(questionare, ID);
             using (QuizEntities DbContext = new QuizEntities())
@@ -53,7 +59,7 @@ namespace TestProject.Repositories
             }
         }
 
-        public static Models.Quiz GetItem(int ID, int QuestionareID)
+        public Models.Quiz GetItem(int ID, int QuestionareID)
         {
             Models.Quiz result = new Models.Quiz();
             using (QuizEntities DbContext = new QuizEntities())
@@ -63,7 +69,7 @@ namespace TestProject.Repositories
             return result;
         }
 
-        public static ICollection<Models.Quiz> GetItems(int ID)
+        public ICollection<Models.Quiz> GetItems(int ID)
         {
             List<Questionare> questionares = new List<Questionare>();
             using (QuizEntities DbContext = new QuizEntities())
@@ -78,7 +84,7 @@ namespace TestProject.Repositories
             return result;
         }
 
-        public static void DeleteItem(Models.Quiz questionare, int ID)
+        public void DeleteItem(Models.Quiz questionare, int ID)
         {
             using (QuizEntities DbContext = new QuizEntities())
             {
@@ -87,7 +93,7 @@ namespace TestProject.Repositories
             }
         }
 
-        public static void UpdateItem(Models.Quiz newQuestion, int ID)
+        public void UpdateItem(Models.Quiz newQuestion, int ID)
         {
             using (QuizEntities DbContext = new QuizEntities())
             {
@@ -97,6 +103,11 @@ namespace TestProject.Repositories
                 DbContext.Entry(questionare).State = System.Data.Entity.EntityState.Modified;
                 DbContext.SaveChanges();
             }
+        }
+
+        public void Dispose()
+        {
+            throw new NotImplementedException();
         }
     }
 }

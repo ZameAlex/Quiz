@@ -1,11 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using TestProject.Models;
-
+using AnsweringQuizes.AnsweringRepositories;
 
 namespace TestProject.Repositories
 {
-    public static class AnswerRepository
+    public class AnswerRepository : IRepository<Answer>
     {
         
         private static Models.Answer ConvertingFromDB(Answers answer)
@@ -54,7 +55,7 @@ namespace TestProject.Repositories
         }
 
 
-        public static void SaveItems(ICollection<Models.Answer> answers, int ID)
+        public void SaveItems(ICollection<Models.Answer> answers, int ID)
         {
             ICollection<Answers> result = new List<Answers>();
             foreach(Models.Answer item in answers)
@@ -70,7 +71,7 @@ namespace TestProject.Repositories
             }
         }
 
-        public static int SaveItem(Models.Answer answer, int ID)
+        public int SaveItem(Models.Answer answer, int ID)
         {
             Answers result = ConvertingToDB(answer, ID);
             using (QuizEntities DbContext = new QuizEntities())
@@ -83,7 +84,7 @@ namespace TestProject.Repositories
         }
 
 
-        public static Answer GetItem(int ID, int QuestionID)
+        public Answer GetItem(int ID, int QuestionID)
         {
             Answer result = new Answer();
             using (QuizEntities DbContext = new QuizEntities())
@@ -93,7 +94,7 @@ namespace TestProject.Repositories
             return result;
         }
 
-        public static ICollection<Answer> GetItems(int ID)
+        public ICollection<Answer> GetItems(int ID)
         {
             List<Answers> answers = new List<Answers>();
             using (QuizEntities DbContext = new QuizEntities())
@@ -108,7 +109,7 @@ namespace TestProject.Repositories
             return result;
         }
 
-        public static void DeleteItem(Answer answer, int ID)
+        public void DeleteItem(Answer answer, int ID)
         {
             using (QuizEntities DbContext = new QuizEntities())
             {
@@ -117,7 +118,7 @@ namespace TestProject.Repositories
             }
         }
 
-        public static void UpdateItem(Answer newAnswer, int ID)
+        public void UpdateItem(Answer newAnswer, int ID)
         {
             using (QuizEntities DbContext = new QuizEntities())
             {
@@ -127,6 +128,11 @@ namespace TestProject.Repositories
                 DbContext.Entry(answer).State = System.Data.Entity.EntityState.Modified;
                 DbContext.SaveChanges();
             }
+        }
+
+        public void Dispose()
+        {
+            
         }
     }
 }
