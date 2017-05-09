@@ -6,11 +6,11 @@
     <edmx:Diagrams>
       <Diagram DiagramId="e6ab4ca96e3a4de1974be0aa2812fe07" Name="Diagram1">
         <EntityTypeShape EntityType="Quiz.Answers" Width="1.5" PointX="7.5" PointY="1.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="Quiz.NextQuestion" Width="1.5" PointX="7.5" PointY="3.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="Quiz.Question" Width="1.5" PointX="5.25" PointY="2.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="Quiz.Questionare" Width="1.5" PointX="3" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Quiz.NextQuestion" Width="1.5" PointX="7.5" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Quiz.Question" Width="1.5" PointX="5" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Quiz.Questionare" Width="1.5" PointX="3" PointY="1.25" IsExpanded="true" />
         <EntityTypeShape EntityType="Quiz.sysdiagrams" Width="1.5" PointX="0.75" PointY="6.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Quiz.Users" Width="1.5" PointX="0.75" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Quiz.Users" Width="1.5" PointX="1" PointY="1.25" IsExpanded="true" />
         <AssociationConnector Association="Quiz.FK_Answers_Question" ManuallyRouted="false" />
         <AssociationConnector Association="Quiz.FK_NextQuestion_NextQuestion" ManuallyRouted="false" />
         <AssociationConnector Association="Quiz.FK_NextQuestion_Question" ManuallyRouted="false" />
