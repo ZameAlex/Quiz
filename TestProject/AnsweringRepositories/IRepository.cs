@@ -11,7 +11,6 @@ namespace TestProject.AnsweringRepositories
         void SaveItems(ICollection<T> items, int ID);
         int SaveItem(T item, int ID);
 
-
          T GetItem(int ID, int ItemID);
 
          ICollection<T> GetItems(int ID);
