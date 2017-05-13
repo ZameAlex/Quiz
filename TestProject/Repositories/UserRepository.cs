@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using TestProject.Models;
-using AnsweringQuizes.AnsweringRepositories;
+using TestProject.AnsweringRepositories;
 
 namespace TestProject.Repositories
 {
@@ -41,7 +41,7 @@ namespace TestProject.Repositories
             {
                 result.Add(ConvertingToDB(item));
             }
-            using (QuizEntities DbContext = new QuizEntities())
+            using (QuizEntities1 DbContext = new QuizEntities1())
             {
                 DbContext.Users.AddRange(result);
                 DbContext.SaveChanges();
@@ -53,7 +53,7 @@ namespace TestProject.Repositories
         public int SaveItem(Models.User user,int id)
         {
             Users result = ConvertingToDB(user);
-            using (QuizEntities DbContext = new QuizEntities())
+            using (QuizEntities1 DbContext = new QuizEntities1())
             {
                 DbContext.Users.Add(result);
                 DbContext.SaveChanges();
@@ -65,7 +65,7 @@ namespace TestProject.Repositories
         public User GetItem(int ID,int id)
         {
             User result = new User();
-            using (QuizEntities DbContext = new QuizEntities())
+            using (QuizEntities1 DbContext = new QuizEntities1())
             {
                 result = ConvertingFromDB(DbContext.Users.Find(ID));
             }
@@ -75,7 +75,7 @@ namespace TestProject.Repositories
         public ICollection<User> GetItems(int id)
         {
             List<Users> users = new List<Users>();
-            using (QuizEntities DbContext = new QuizEntities())
+            using (QuizEntities1 DbContext = new QuizEntities1())
             {
                 users = DbContext.Users.ToList();
             }
@@ -89,7 +89,7 @@ namespace TestProject.Repositories
 
         public void DeleteItem(User user,int id)
         {
-            using (QuizEntities DbContext = new QuizEntities())
+            using (QuizEntities1 DbContext = new QuizEntities1())
             {
                 DbContext.Users.Remove(DbContext.Users.Find(user.ID));
                 DbContext.SaveChanges();
@@ -98,7 +98,7 @@ namespace TestProject.Repositories
 
         public void UpdateItem(User newUser, int ID)
         {
-            using (QuizEntities DbContext = new QuizEntities())
+            using (QuizEntities1 DbContext = new QuizEntities1())
             {
                 Users user;
                 user = DbContext.Users.Find(ID);

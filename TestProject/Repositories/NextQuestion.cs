@@ -7,32 +7,29 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace TestProject
+namespace TestProject.Repositories
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Question
+    public partial class NextQuestion
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Question()
+        public NextQuestion()
         {
-            this.Answers = new HashSet<Answers>();
-            this.NextQuestion = new HashSet<NextQuestion>();
             this.NextQuestion1 = new HashSet<NextQuestion>();
         }
     
         public int ID { get; set; }
-        public string Text { get; set; }
-        public int Type { get; set; }
-        public int IDQuestionare { get; set; }
+        public string Answers { get; set; }
+        public int IDQuestion { get; set; }
+        public Nullable<int> IDNextRule { get; set; }
+        public int IDNextQuestion { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Answers> Answers { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<NextQuestion> NextQuestion { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<NextQuestion> NextQuestion1 { get; set; }
-        public virtual Questionare Questionare { get; set; }
+        public virtual NextQuestion NextQuestion2 { get; set; }
+        public virtual Question Question { get; set; }
+        public virtual Question Question1 { get; set; }
     }
 }

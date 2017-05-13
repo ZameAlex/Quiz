@@ -22,7 +22,8 @@ namespace TestProject
         }
         static void Main(string[] args)
         {
-            
+            int i = 1;
+            Console.WriteLine("i={0}",i++);
             
             Console.ReadKey();
         }

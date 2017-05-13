@@ -7,25 +7,23 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace TestProject
+namespace TestProject.AnsweringRepositories
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Users
+    public partial class Questions
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Users()
+        public Questions()
         {
-            this.Questionare = new HashSet<Questionare>();
+            this.Records = new HashSet<Records>();
         }
     
         public int ID { get; set; }
-        public string Login { get; set; }
-        public string Password { get; set; }
-        public int Role { get; set; }
+        public string Text { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Questionare> Questionare { get; set; }
+        public virtual ICollection<Records> Records { get; set; }
     }
 }

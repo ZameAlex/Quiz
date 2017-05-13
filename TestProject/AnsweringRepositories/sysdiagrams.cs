@@ -7,18 +7,17 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace TestProject
+namespace TestProject.AnsweringRepositories
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Answers
+    public partial class sysdiagrams
     {
-        public int ID { get; set; }
-        public string Text { get; set; }
-        public int Type { get; set; }
-        public int IDQuestion { get; set; }
-    
-        public virtual Question Question { get; set; }
+        public string name { get; set; }
+        public int principal_id { get; set; }
+        public int diagram_id { get; set; }
+        public Nullable<int> version { get; set; }
+        public byte[] definition { get; set; }
     }
 }

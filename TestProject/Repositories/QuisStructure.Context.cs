@@ -7,16 +7,16 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace TestProject
+namespace TestProject.Repositories
 {
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class QuizEntities : DbContext
+    public partial class QuizEntities1 : DbContext
     {
-        public QuizEntities()
-            : base("name=QuizEntities")
+        public QuizEntities1()
+            : base("name=QuizEntities1")
         {
         }
     

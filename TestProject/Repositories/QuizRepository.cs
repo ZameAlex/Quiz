@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using AnsweringQuizes.AnsweringRepositories;
+using TestProject.AnsweringRepositories;
 
 namespace TestProject.Repositories
 {
@@ -38,7 +38,7 @@ namespace TestProject.Repositories
             {
                 result.Add(ConvertingToDB(item, ID));
             }
-            using (QuizEntities DbContext = new QuizEntities())
+            using (QuizEntities1 DbContext = new QuizEntities1())
             {
                 DbContext.Questionare.AddRange(result);
                 DbContext.SaveChanges();
@@ -50,7 +50,7 @@ namespace TestProject.Repositories
         public int SaveItem(Models.Quiz questionare, int ID)
         {
             Questionare result = ConvertingToDB(questionare, ID);
-            using (QuizEntities DbContext = new QuizEntities())
+            using (QuizEntities1 DbContext = new QuizEntities1())
             {
                 DbContext.Questionare.Add(result);
                 DbContext.SaveChanges();
@@ -62,7 +62,7 @@ namespace TestProject.Repositories
         public Models.Quiz GetItem(int ID, int QuestionareID)
         {
             Models.Quiz result = new Models.Quiz();
-            using (QuizEntities DbContext = new QuizEntities())
+            using (QuizEntities1 DbContext = new QuizEntities1())
             {
                 result = ConvertingFromDB(DbContext.Users.Find(QuestionareID).Questionare.ElementAt(ID));
             }
@@ -72,7 +72,7 @@ namespace TestProject.Repositories
         public ICollection<Models.Quiz> GetItems(int ID)
         {
             List<Questionare> questionares = new List<Questionare>();
-            using (QuizEntities DbContext = new QuizEntities())
+            using (QuizEntities1 DbContext = new QuizEntities1())
             {
                 questionares = DbContext.Users.Find(ID).Questionare.ToList();
             }
@@ -86,7 +86,7 @@ namespace TestProject.Repositories
 
         public void DeleteItem(Models.Quiz questionare, int ID)
         {
-            using (QuizEntities DbContext = new QuizEntities())
+            using (QuizEntities1 DbContext = new QuizEntities1())
             {
                 DbContext.Questionare.Remove(ConvertingToDB(questionare, ID));
                 DbContext.SaveChanges();
@@ -95,7 +95,7 @@ namespace TestProject.Repositories
 
         public void UpdateItem(Models.Quiz newQuestion, int ID)
         {
-            using (QuizEntities DbContext = new QuizEntities())
+            using (QuizEntities1 DbContext = new QuizEntities1())
             {
                 Questionare questionare;
                 questionare = DbContext.Questionare.Find(ID);

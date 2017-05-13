@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using TestProject.Models;
-using AnsweringQuizes.AnsweringRepositories;
+using TestProject.AnsweringRepositories;
 
 namespace TestProject.Repositories
 {
@@ -41,7 +41,7 @@ namespace TestProject.Repositories
             {
                 result.Add(ConvertingToDB(item, ID));
             }
-            using (QuizEntities DbContext = new QuizEntities())
+            using (QuizEntities1 DbContext = new QuizEntities1())
             {
                 DbContext.NextQuestion.AddRange(result);
                 DbContext.SaveChanges();
@@ -60,7 +60,7 @@ namespace TestProject.Repositories
         public int SaveItem(Models.Rule rule, int ID)
         {
             NextQuestion result = ConvertingToDB(rule, ID);
-            using (QuizEntities DbContext = new QuizEntities())
+            using (QuizEntities1 DbContext = new QuizEntities1())
             {
                 DbContext.NextQuestion.Add(result);
                 DbContext.SaveChanges();
@@ -72,7 +72,7 @@ namespace TestProject.Repositories
         public Rule GetItem(int ID, int QuestionID)
         {
             Rule result = new Rule();
-            using (QuizEntities DbContext = new QuizEntities())
+            using (QuizEntities1 DbContext = new QuizEntities1())
             {
                 result = ConvertingFromDB(DbContext.Question.Find(QuestionID).NextQuestion.ElementAt(ID));
             }
@@ -82,7 +82,7 @@ namespace TestProject.Repositories
         public ICollection<Rule> GetItems(int ID)
         {
             List<NextQuestion> rules = new List<NextQuestion>();
-            using (QuizEntities DbContext = new QuizEntities())
+            using (QuizEntities1 DbContext = new QuizEntities1())
             {
                 rules = DbContext.Question.Find(ID).NextQuestion.ToList();
             }
@@ -96,7 +96,7 @@ namespace TestProject.Repositories
 
         public void DeleteItem(Rule rule, int ID)
         {
-            using (QuizEntities DbContext = new QuizEntities())
+            using (QuizEntities1 DbContext = new QuizEntities1())
             {
                 DbContext.NextQuestion.Remove(ConvertingToDB(rule, ID));
                 DbContext.SaveChanges();
@@ -105,7 +105,7 @@ namespace TestProject.Repositories
 
         public void UpdateItem(Rule newRule, int ID)
         {
-            using (QuizEntities DbContext = new QuizEntities())
+            using (QuizEntities1 DbContext = new QuizEntities1())
             {
                 NextQuestion rule;
                 rule = DbContext.NextQuestion.Find(ID);
