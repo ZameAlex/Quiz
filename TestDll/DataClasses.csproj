@@ -1,0 +1,186 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{CE271A78-F46F-4020-99CA-77C2E1C5C5A0}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DataClasses</RootNamespace>
+    <AssemblyName>DataClasses</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\Quiz\bin\Release\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\Quiz\bin\Release\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AnsweringRepositories\AAnswersRepository.cs" />
+    <Compile Include="AnsweringRepositories\Answers.cs">
+      <DependentUpon>AnswersStructure.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AnsweringRepositories\AnswersStructure.Context.cs">
+      <DependentUpon>AnswersStructure.Context.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="AnsweringRepositories\AnswersStructure.cs">
+      <DependentUpon>AnswersStructure.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="AnsweringRepositories\AnswersStructure.Designer.cs">
+      <DependentUpon>AnswersStructure.edmx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="AnsweringRepositories\AQuestionRepository.cs" />
+    <Compile Include="AnsweringRepositories\AQuizRepository.cs" />
+    <Compile Include="AnsweringRepositories\ARecordsRepository.cs" />
+    <Compile Include="AnsweringRepositories\ARespondentsRepository.cs" />
+    <Compile Include="AnsweringRepositories\Questions.cs">
+      <DependentUpon>AnswersStructure.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AnsweringRepositories\Quizes.cs">
+      <DependentUpon>AnswersStructure.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AnsweringRepositories\Records.cs">
+      <DependentUpon>AnswersStructure.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AnsweringRepositories\Respondents.cs">
+      <DependentUpon>AnswersStructure.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AnsweringRepositories\sysdiagrams.cs">
+      <DependentUpon>AnswersStructure.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Answer.cs" />
+    <Compile Include="Models\Question.cs" />
+    <Compile Include="Models\Quiz.cs" />
+    <Compile Include="Models\Rule.cs" />
+    <Compile Include="Models\User.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\AnswerRepository.cs" />
+    <Compile Include="Repositories\Answers.cs">
+      <DependentUpon>QuizStructure.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IRepository.cs" />
+    <Compile Include="Repositories\NextQuestion.cs">
+      <DependentUpon>QuizStructure.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\Question.cs">
+      <DependentUpon>QuizStructure.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\Questionare.cs">
+      <DependentUpon>QuizStructure.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\QuestionRepository.cs" />
+    <Compile Include="Repositories\QuizRepository.cs" />
+    <Compile Include="Repositories\QuizStructure.Context.cs">
+      <DependentUpon>QuizStructure.Context.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Repositories\QuizStructure.cs">
+      <DependentUpon>QuizStructure.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Repositories\QuizStructure.Designer.cs">
+      <DependentUpon>QuizStructure.edmx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Repositories\RuleRepository.cs" />
+    <Compile Include="Repositories\sysdiagrams.cs">
+      <DependentUpon>QuizStructure.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\UserRepository.cs" />
+    <Compile Include="Repositories\Users.cs">
+      <DependentUpon>QuizStructure.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="AnsweringRepositories\AnswersStructure.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>AnswersStructure.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="AnsweringRepositories\AnswersStructure.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>AnswersStructure.edmx</DependentUpon>
+      <LastGenOutput>AnswersStructure.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="AnsweringRepositories\AnswersStructure.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>AnswersStructure.edmx</DependentUpon>
+      <LastGenOutput>AnswersStructure.cs</LastGenOutput>
+    </Content>
+    <Content Include="Repositories\QuizStructure.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>QuizStructure.edmx</DependentUpon>
+      <LastGenOutput>QuizStructure.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Repositories\QuizStructure.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>QuizStructure.edmx</DependentUpon>
+      <LastGenOutput>QuizStructure.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="AnsweringRepositories\AnswersStructure.edmx.diagram">
+      <DependentUpon>AnswersStructure.edmx</DependentUpon>
+    </None>
+    <EntityDeploy Include="Repositories\QuizStructure.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>QuizStructure.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Repositories\QuizStructure.edmx.diagram">
+      <DependentUpon>QuizStructure.edmx</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -7,5 +7,6 @@ D:\study\C#\AppUnits\TestProject\bin\Debug\EntityFramework.xml
 D:\study\C#\AppUnits\TestProject\bin\Debug\EntityFramework.SqlServer.xml
 D:\study\C#\AppUnits\TestProject\obj\Debug\TestProject.exe
 D:\study\C#\AppUnits\TestProject\obj\Debug\TestProject.pdb
-D:\study\C#\AppUnits\TestProject\bin\Debug\Quiz.dll
-D:\study\C#\AppUnits\TestProject\bin\Debug\Quiz.pdb
+D:\study\C#\AppUnits\TestProject\obj\Debug\TestProject.csprojResolveAssemblyReference.cache
+D:\study\C#\AppUnits\TestProject\bin\Debug\DataClasses.dll
+D:\study\C#\AppUnits\TestProject\bin\Debug\DataClasses.pdb

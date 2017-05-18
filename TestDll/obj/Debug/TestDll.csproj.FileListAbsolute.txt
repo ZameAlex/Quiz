@@ -1,0 +1,8 @@
+D:\study\C#\AppUnits\TestDll\bin\Debug\TestDll.dll
+D:\study\C#\AppUnits\TestDll\bin\Debug\TestDll.pdb
+D:\study\C#\AppUnits\TestDll\bin\Debug\EntityFramework.dll
+D:\study\C#\AppUnits\TestDll\bin\Debug\EntityFramework.SqlServer.dll
+D:\study\C#\AppUnits\TestDll\bin\Debug\EntityFramework.xml
+D:\study\C#\AppUnits\TestDll\bin\Debug\EntityFramework.SqlServer.xml
+D:\study\C#\AppUnits\TestDll\obj\Debug\TestDll.dll
+D:\study\C#\AppUnits\TestDll\obj\Debug\TestDll.pdb

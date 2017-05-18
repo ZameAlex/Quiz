@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TestProject.Models;
-using TestProject.Repositories;
-using TestProject.AnsweringRepositories;
+using DataClasses.Models;
+using DataClasses.Repositories;
+using DataClasses.AnsweringRepositories;
 
 namespace TestProject
 {
@@ -23,27 +23,34 @@ namespace TestProject
         }
         static void Main(string[] args)
         {
+            DataClasses.Models.Answer ans = new DataClasses.Models.Answer();
+            ans.Text = "dfsg";
+            ans.Type = (int)QuestionTypes.OneAnswer;
+            using (AnswerRepository ar = new AnswerRepository())
+            {
+                ar.SaveItem(ans,1);
+            }
             int i = 1;
             Console.WriteLine("i={0}",i++);
-            AnsweringRepositories.Quizes quiz = new Quizes();
+            Quizes quiz = new Quizes();
             quiz.ID = 1;
             quiz.Name = "Quiz1";
             Questions q = new Questions();
             q.Text = "WTF?";
-            AnsweringRepositories.Answers a = new AnsweringRepositories.Answers();
+            DataClasses.AnsweringRepositories.Answers a = new DataClasses.AnsweringRepositories.Answers();
             a.ID = 18;
             a.Text = "1";
             a.Number = 1;
-            AnsweringRepositories.Answers a1 = new AnsweringRepositories.Answers();
+            DataClasses.AnsweringRepositories.Answers a1 = new DataClasses.AnsweringRepositories.Answers();
             a1.Text = "2";
             a1.Number = 2;
-            AnsweringRepositories.Answers a2 = new AnsweringRepositories.Answers();
+            DataClasses.AnsweringRepositories.Answers a2 = new DataClasses.AnsweringRepositories.Answers();
             a2.Text = "3";
             a2.Number = 3;
             Respondents r = new Respondents();
             r.Name = "Alex";
             r.Surname = "Zame";
-            int ida,idquiz,idq,idr;
+            int ida;
             using (AAnswersRepository DB = new AAnswersRepository())
             {
                 ida = DB.SaveItem(a, 0);
