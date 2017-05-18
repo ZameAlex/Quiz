@@ -118,34 +118,31 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\Answers.cs">
-      <DependentUpon>QuisStructure.tt</DependentUpon>
+      <DependentUpon>QuizStructure.tt</DependentUpon>
     </Compile>
     <Compile Include="Repositories\NextQuestion.cs">
-      <DependentUpon>QuisStructure.tt</DependentUpon>
+      <DependentUpon>QuizStructure.tt</DependentUpon>
     </Compile>
     <Compile Include="Repositories\Question.cs">
-      <DependentUpon>QuisStructure.tt</DependentUpon>
+      <DependentUpon>QuizStructure.tt</DependentUpon>
     </Compile>
     <Compile Include="Repositories\Questionare.cs">
-      <DependentUpon>QuisStructure.tt</DependentUpon>
+      <DependentUpon>QuizStructure.tt</DependentUpon>
     </Compile>
-    <Compile Include="Repositories\QuisStructure.Context.cs">
+    <Compile Include="Repositories\QuizStructure.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>QuisStructure.Context.tt</DependentUpon>
+      <DependentUpon>QuizStructure.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Repositories\QuisStructure.cs">
+    <Compile Include="Repositories\QuizStructure.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>QuisStructure.tt</DependentUpon>
+      <DependentUpon>QuizStructure.tt</DependentUpon>
     </Compile>
-    <Compile Include="Repositories\QuisStructure.Designer.cs">
+    <Compile Include="Repositories\QuizStructure.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>QuisStructure.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Repositories\sysdiagrams.cs">
-      <DependentUpon>QuisStructure.tt</DependentUpon>
+      <DependentUpon>QuizStructure.edmx</DependentUpon>
     </Compile>
     <Compile Include="Repositories\UserRepository.cs" />
     <Compile Include="Repositories\QuizRepository.cs" />
@@ -153,7 +150,7 @@
     <Compile Include="Repositories\AnswerRepository.cs" />
     <Compile Include="Repositories\RuleRepository.cs" />
     <Compile Include="Repositories\Users.cs">
-      <DependentUpon>QuisStructure.tt</DependentUpon>
+      <DependentUpon>QuizStructure.tt</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -166,12 +163,12 @@
     </None>
     <None Include="App.config" />
     <None Include="packages.config" />
-    <EntityDeploy Include="Repositories\QuisStructure.edmx">
+    <EntityDeploy Include="Repositories\QuizStructure.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>QuisStructure.Designer.cs</LastGenOutput>
+      <LastGenOutput>QuizStructure.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="Repositories\QuisStructure.edmx.diagram">
-      <DependentUpon>QuisStructure.edmx</DependentUpon>
+    <None Include="Repositories\QuizStructure.edmx.diagram">
+      <DependentUpon>QuizStructure.edmx</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>
@@ -200,15 +197,15 @@
       <DependentUpon>AnswersStructure.edmx</DependentUpon>
       <LastGenOutput>AnswersStructure.cs</LastGenOutput>
     </Content>
-    <Content Include="Repositories\QuisStructure.Context.tt">
+    <Content Include="Repositories\QuizStructure.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>QuisStructure.edmx</DependentUpon>
-      <LastGenOutput>QuisStructure.Context.cs</LastGenOutput>
+      <DependentUpon>QuizStructure.edmx</DependentUpon>
+      <LastGenOutput>QuizStructure.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Repositories\QuisStructure.tt">
+    <Content Include="Repositories\QuizStructure.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>QuisStructure.edmx</DependentUpon>
-      <LastGenOutput>QuisStructure.cs</LastGenOutput>
+      <DependentUpon>QuizStructure.edmx</DependentUpon>
+      <LastGenOutput>QuizStructure.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

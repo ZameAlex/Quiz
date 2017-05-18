@@ -29,7 +29,6 @@ namespace TestProject.Repositories
         public virtual DbSet<NextQuestion> NextQuestion { get; set; }
         public virtual DbSet<Question> Question { get; set; }
         public virtual DbSet<Questionare> Questionare { get; set; }
-        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<Users> Users { get; set; }
     }
 }

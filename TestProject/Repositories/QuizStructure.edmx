@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="QuizModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="QuizModel1.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Answers">
           <Key>
             <PropertyRef Name="ID" />
@@ -134,7 +134,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="QuizModelStoreContainer">
+        <EntityContainer Name="QuizModel1StoreContainer">
           <EntitySet Name="Answers" EntityType="Self.Answers" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NextQuestion" EntityType="Self.NextQuestion" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Question" EntityType="Self.Question" Schema="dbo" store:Type="Tables" />
@@ -170,7 +170,7 @@
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="QuizModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="QuizModel1" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Answers">
           <Key>
             <PropertyRef Name="ID" />
@@ -349,9 +349,9 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="QuizModelStoreContainer" CdmEntityContainer="QuizEntities1">
+        <EntityContainerMapping StorageEntityContainer="QuizModel1StoreContainer" CdmEntityContainer="QuizEntities1">
           <EntitySetMapping Name="Answers">
-            <EntityTypeMapping TypeName="QuizModel.Answers">
+            <EntityTypeMapping TypeName="QuizModel1.Answers">
               <MappingFragment StoreEntitySet="Answers">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Text" ColumnName="Text" />
@@ -361,7 +361,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="NextQuestion">
-            <EntityTypeMapping TypeName="QuizModel.NextQuestion">
+            <EntityTypeMapping TypeName="QuizModel1.NextQuestion">
               <MappingFragment StoreEntitySet="NextQuestion">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Answers" ColumnName="Answers" />
@@ -372,7 +372,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Question">
-            <EntityTypeMapping TypeName="QuizModel.Question">
+            <EntityTypeMapping TypeName="QuizModel1.Question">
               <MappingFragment StoreEntitySet="Question">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Text" ColumnName="Text" />
@@ -382,7 +382,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Questionare">
-            <EntityTypeMapping TypeName="QuizModel.Questionare">
+            <EntityTypeMapping TypeName="QuizModel1.Questionare">
               <MappingFragment StoreEntitySet="Questionare">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -393,7 +393,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="QuizModel.sysdiagrams">
+            <EntityTypeMapping TypeName="QuizModel1.sysdiagrams">
               <MappingFragment StoreEntitySet="sysdiagrams">
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="principal_id" ColumnName="principal_id" />
@@ -404,7 +404,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Users">
-            <EntityTypeMapping TypeName="QuizModel.Users">
+            <EntityTypeMapping TypeName="QuizModel1.Users">
               <MappingFragment StoreEntitySet="Users">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Login" ColumnName="Login" />

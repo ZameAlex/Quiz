@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="QuizAnswersModelStoreContainer" CdmEntityContainer="QuizAnswersEntities1">
+  <EntityContainerMapping StorageEntityContainer="QuizAnswersModel1StoreContainer" CdmEntityContainer="QuizAnswersEntities1">
     <EntitySetMapping Name="Answers">
-      <EntityTypeMapping TypeName="QuizAnswersModel.Answers">
+      <EntityTypeMapping TypeName="QuizAnswersModel1.Answers">
         <MappingFragment StoreEntitySet="Answers">
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="Text" ColumnName="Text" />
@@ -11,7 +11,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Questions">
-      <EntityTypeMapping TypeName="QuizAnswersModel.Questions">
+      <EntityTypeMapping TypeName="QuizAnswersModel1.Questions">
         <MappingFragment StoreEntitySet="Questions">
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="Text" ColumnName="Text" />
@@ -19,7 +19,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Quizes">
-      <EntityTypeMapping TypeName="QuizAnswersModel.Quizes">
+      <EntityTypeMapping TypeName="QuizAnswersModel1.Quizes">
         <MappingFragment StoreEntitySet="Quizes">
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="Name" ColumnName="Name" />
@@ -27,7 +27,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Records">
-      <EntityTypeMapping TypeName="QuizAnswersModel.Records">
+      <EntityTypeMapping TypeName="QuizAnswersModel1.Records">
         <MappingFragment StoreEntitySet="Records">
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="IDRespondent" ColumnName="IDRespondent" />
@@ -39,7 +39,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Respondents">
-      <EntityTypeMapping TypeName="QuizAnswersModel.Respondents">
+      <EntityTypeMapping TypeName="QuizAnswersModel1.Respondents">
         <MappingFragment StoreEntitySet="Respondents">
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="Name" ColumnName="Name" />
@@ -48,7 +48,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="sysdiagrams">
-      <EntityTypeMapping TypeName="QuizAnswersModel.sysdiagrams">
+      <EntityTypeMapping TypeName="QuizAnswersModel1.sysdiagrams">
         <MappingFragment StoreEntitySet="sysdiagrams">
           <ScalarProperty Name="name" ColumnName="name" />
           <ScalarProperty Name="principal_id" ColumnName="principal_id" />
