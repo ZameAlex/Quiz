@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestProject", "TestProject\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataClasses", "TestDll\DataClasses.csproj", "{CE271A78-F46F-4020-99CA-77C2E1C5C5A0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FirstWebApp", "FirstWebApp\FirstWebApp.csproj", "{794F6825-08EA-460C-B791-37172556EC9A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{CE271A78-F46F-4020-99CA-77C2E1C5C5A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CE271A78-F46F-4020-99CA-77C2E1C5C5A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CE271A78-F46F-4020-99CA-77C2E1C5C5A0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{794F6825-08EA-460C-B791-37172556EC9A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{794F6825-08EA-460C-B791-37172556EC9A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{794F6825-08EA-460C-B791-37172556EC9A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{794F6825-08EA-460C-B791-37172556EC9A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
