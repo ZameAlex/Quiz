@@ -1,0 +1,144 @@
+﻿
+@{
+    ViewBag.Title = "CreateQuestion";
+}
+
+
+
+<script>
+    function AddCheckbox()
+    {
+        return "<div class=\"input-group\"><span class=\"input-group-addon\"><input type=\"checkbox\" aria-label=\"Checkbox for following text input\" disabled></span>            <input type=\"text\" class=\"form-control\" aria-label=\"Text input with checkbox\"  value=\"option\"></div><br \>"
+    }
+
+    function AddRadio() {
+        return "<div class=\"input-group\"><span class=\"input-group-addon\"><input type=\"radio\" aria-label=\"Radio button for following text input\" disabled></span>            <input type=\"text\" class=\"form-control\" aria-label=\"Text input with radio button\"  value=\"option\"></div><br \>"
+    }
+
+    function ChangeAllToR()
+    {
+        var checkboxes = $('[type=checkbox]');
+        for (var i = 0; i < checkboxes.length; i++)
+            checkboxes[i].setAttribute('type', 'radio');
+    }
+    function ChangeAllToCh() {
+        var checkboxes = $('[type=radio]');
+        for (var i = 0; i < checkboxes.length; i++)
+            checkboxes[i].setAttribute('type', 'checkbox');
+    }
+
+    function change() {
+        var id = document.getElementById('type').selectedIndex;
+        switch (id) {
+            case 0:
+                if($("#open").length)
+                {
+                    $('#AddAnswer').enabled;
+                    $('.container:last').empty();
+                    $('.container:last').append(AddRadio());
+                }
+                ChangeAllToR();
+                break;
+            case 1:
+                if ($("#open").length) {
+                    $('#AddAnswer').enabled;
+                    $('.container:last').empty();
+                    $('.container:last').append(AddCheckbox());
+                }
+                ChangeAllToCh();
+                break;
+            case 2:
+                $('.container:last').empty();
+                $('.container:last').append("<label id=\"open\">Open answer</label>");
+                $('#AddAnswer').disabled;
+                break;
+            default:
+                break;
+        }
+
+    }
+</script>
+
+<div class="container">
+    <h2>Quiz</h2>
+        <div class="form-group">
+            <label> Choose question type</label>
+            <select id="type" onchange="change()">
+                <option id="1">One answer</option>
+                <option id="2">Some answers</option>
+                <option id="3">Open answer</option>
+            </select>
+                
+            <br />
+            <br />
+
+            <label for="name">Question:</label>
+            <input type="text" class="form-control" id="text" name="text" placeholder="Enter question text">
+        </div>
+        <label for="name">Answers:</label>
+        <div class="container">
+            <div class="input-group">
+                <span class="input-group-addon">
+                    <input type="radio" aria-label="Radio button for following text input" disabled>
+                </span>
+                <input type="text" class="form-control" aria-label="Text input with radio button" value="option">
+            </div>
+            <br />
+        </div>
+        <button type="button" class="btn btn-link" id="AddAnswer">Add answer</button> 
+        <br />
+        <br />
+        <button type="button" class="btn btn-primary" id="Next">Apply</button>
+        <br />
+        <br />
+
+    
+</div>
+
+
+<script>
+    $("#AddAnswer").on("click", function () {
+        var id = document.getElementById('type').selectedIndex;
+        switch (id) {
+            case 0:
+                $('.container:last').append(AddRadio());
+                break;
+            case 1:
+                $('.container:last').append(AddCheckbox());
+                break;
+        }
+    })
+</script>
+
+<script>
+    $("#Next").on("click", function () {
+        var id = document.getElementById('type').selectedIndex;
+        var result = [];
+       
+        switch (id) {
+            case 0:
+                var d = $('.container:last input.form-control');
+                for (var i = 0; i < d.length; i++)
+                    result.push(d[i].value);
+                break;
+            case 1:
+                var d = $('.container:last input.form-control');
+                for (var i = 0; i < d.length; i++)
+                    result.push(d[i].value);
+                break;
+            case 2:
+                break;
+        }
+        var x = {
+            Text: document.getElementById('text').value,
+            Answers: result,
+            Id:id
+        };
+        $.ajax({
+            type: "POST",
+            url: '@Url.Action("CreateQuestion","Profile")',
+            data: x,
+            success: function () { window.location.href = '/Profile/Questions'; }
+        });
+    })
+</script>

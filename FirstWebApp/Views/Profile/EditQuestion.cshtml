@@ -1,0 +1,42 @@
+﻿@model DataClasses.Models.Question
+@{
+    ViewBag.Title = "EditQuestion";
+}
+
+<div class="container">
+    <h2>Quiz</h2>
+    <div class="form-group">
+        <label for="name">Question:</label>
+        <input type="text" class="form-control" id="text" name="text" placeholder="Enter question text" value="@Model.Text">
+    </div>
+    @if (Model.Type != DataClasses.Models.QuestionTypes.OpenAnswer)
+    {
+        <label for="comment">Answers:</label>
+        <div class="container">
+            <div class="input-group">
+                <span class="input-group-addon">
+                    @if (Model.Type == DataClasses.Models.QuestionTypes.OneAnswer)
+                    {
+                        foreach (var item in Model.Answers)
+                        {
+                            @Html.TextBoxFor(x => item.Text, new { @class = "form-control" })
+                        }
+                    }
+                </span>
+                <input type="text" class="form-control" aria-label="Text input with radio button" value="option">
+            </div>
+            <br />
+        </div>
+
+    }
+    @if (Model.Type == DataClasses.Models.QuestionTypes.OpenAnswer)
+    {
+        <label>Open answer</label>
+    }
+    <br />
+    <button type="button" class="btn btn-primary">Save</button>
+    <br />
+
+
+
+

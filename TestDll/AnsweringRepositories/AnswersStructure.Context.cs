@@ -30,6 +30,5 @@ namespace DataClasses.AnsweringRepositories
         public virtual DbSet<Quizes> Quizes { get; set; }
         public virtual DbSet<Records> Records { get; set; }
         public virtual DbSet<Respondents> Respondents { get; set; }
-        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
     }
 }

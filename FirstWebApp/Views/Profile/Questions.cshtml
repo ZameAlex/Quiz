@@ -1,0 +1,86 @@
+﻿@model DataClasses.Models.Quiz
+@{
+    ViewBag.Title = "Questions";
+}
+
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+<div class="table-responsive">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>№</th>
+                <th>Text</th>
+                <th>Type</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (int i = 0; i < Model.Questions.Count; i++)
+            {
+                <tr>
+                    <td>@(i + 1)</td>
+                    <td>@Html.DisplayFor(x => x.Questions.ElementAt(i).Text)</td>
+                    <td>@Html.DisplayFor(x => x.Questions.ElementAt(i).Type)</td>
+
+                    <td>
+                        <button id="edit+@i" type="button" class="btn btn-warning btn-xs" name="@Model.Questions.ElementAt(i).DBID">
+                            <span class="glyphicon glyphicon-pencil"></span>
+                        </button>
+                    </td>
+                    <td>
+                        <button id="delete+@i" type="button" class="btn btn-danger btn-xs" name="@Model.Questions.ElementAt(i).DBID">
+                            <span class="glyphicon glyphicon-trash"></span>
+                        </button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+    <button id="add" type="button" class="btn btn-primary btn-lg" name="addQuestion">
+        <span class="glyphicon glyphicon-plus">Add question</span>
+    </button>
+
+
+<script>
+    $('[id^=delete]').on('click',(function ()
+    {
+        if (confirm("Are you sure?")) {
+            var d = { ID: this.name };
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("DeleteQuestion","Profile")',
+                data: d,
+                success: function () { window.location.href = '/Profile/Questions'; }
+            });
+        }
+    }));
+</script>
+
+<script>
+    $('[id^=edit]').click(function ()
+    {
+        var d = { ID: this.name };
+        $.ajax({
+            type: "POST",
+            url: '@Url.Action("EditQ","Profile")',
+            data: d,
+            success: function () { window.location.href = '/Profile/EditQuestion'; }
+        });
+    });
+</script>
+
+<script>
+    $('#add').on('click',(function ()
+    {
+            $.ajax({
+                type: "GET",
+                url: '@Url.Action("CreateQuestion","Profile")',
+                success: function () { window.location.href = '/Profile/CreateQuestion'; }
+            });
+        }
+    ));
+</script>
+

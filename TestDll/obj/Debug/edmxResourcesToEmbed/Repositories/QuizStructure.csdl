@@ -5,7 +5,7 @@
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Text" Type="String" MaxLength="30" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Text" Type="String" MaxLength="100" FixedLength="true" Unicode="true" Nullable="false" />
     <Property Name="Type" Type="Int32" Nullable="false" />
     <Property Name="IDQuestion" Type="Int32" Nullable="false" />
     <NavigationProperty Name="Question" Relationship="Self.FK_Answers_Question" FromRole="Answers" ToRole="Question" />
@@ -15,7 +15,7 @@
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Answers" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+    <Property Name="Answers" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
     <Property Name="IDQuestion" Type="Int32" Nullable="false" />
     <Property Name="IDNextRule" Type="Int32" />
     <Property Name="IDNextQuestion" Type="Int32" Nullable="false" />
@@ -29,7 +29,7 @@
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Text" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Text" Type="String" MaxLength="100" FixedLength="true" Unicode="true" Nullable="false" />
     <Property Name="Type" Type="Int32" Nullable="false" />
     <Property Name="IDQuestionare" Type="Int32" Nullable="false" />
     <NavigationProperty Name="Answers" Relationship="Self.FK_Answers_Question" FromRole="Question" ToRole="Answers" />
@@ -42,7 +42,7 @@
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Name" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
     <Property Name="IDUser" Type="Int32" Nullable="false" />
     <Property Name="URL" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
     <Property Name="Type" Type="Boolean" />
@@ -64,8 +64,8 @@
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Login" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
-    <Property Name="Password" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Login" Type="String" MaxLength="30" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="25" FixedLength="true" Unicode="true" Nullable="false" />
     <Property Name="Role" Type="Int32" Nullable="false" />
     <NavigationProperty Name="Questionare" Relationship="Self.FK_Questionare_Users" FromRole="Users" ToRole="Questionare" />
   </EntityType>

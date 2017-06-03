@@ -1,0 +1,164 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="M1Quiz.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Answers">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Text" Type="nchar" MaxLength="30" Nullable="false" />
+    <Property Name="Type" Type="int" Nullable="false" />
+    <Property Name="IDQuestion" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="NextQuestion">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Answers" Type="nchar" MaxLength="20" />
+    <Property Name="IDQuestion" Type="int" Nullable="false" />
+    <Property Name="IDNextRule" Type="int" />
+    <Property Name="IDNextQuestion" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Question">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Text" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="Type" Type="int" Nullable="false" />
+    <Property Name="IDQuestionare" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Questionare">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="IDUser" Type="int" Nullable="false" />
+    <Property Name="URL" Type="nchar" MaxLength="30" />
+    <Property Name="Type" Type="bit" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Login" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="Password" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="Role" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Answers_Question">
+    <End Role="Question" Type="Self.Question" Multiplicity="1" />
+    <End Role="Answers" Type="Self.Answers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Question">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Answers">
+        <PropertyRef Name="IDQuestion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_NextQuestion_NextQuestion">
+    <End Role="NextQuestion" Type="Self.NextQuestion" Multiplicity="0..1" />
+    <End Role="NextQuestion1" Type="Self.NextQuestion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NextQuestion">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="NextQuestion1">
+        <PropertyRef Name="IDNextRule" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_NextQuestion_Question">
+    <End Role="Question" Type="Self.Question" Multiplicity="1" />
+    <End Role="NextQuestion" Type="Self.NextQuestion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Question">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="NextQuestion">
+        <PropertyRef Name="IDQuestion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_NextQuestion_Question1">
+    <End Role="Question" Type="Self.Question" Multiplicity="1" />
+    <End Role="NextQuestion" Type="Self.NextQuestion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Question">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="NextQuestion">
+        <PropertyRef Name="IDNextQuestion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Question_Questionare">
+    <End Role="Questionare" Type="Self.Questionare" Multiplicity="1" />
+    <End Role="Question" Type="Self.Question" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Questionare">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Question">
+        <PropertyRef Name="IDQuestionare" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Questionare_Users">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="Questionare" Type="Self.Questionare" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Questionare">
+        <PropertyRef Name="IDUser" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="M1QuizStoreContainer">
+    <EntitySet Name="Answers" EntityType="Self.Answers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="NextQuestion" EntityType="Self.NextQuestion" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Question" EntityType="Self.Question" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Questionare" EntityType="Self.Questionare" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Answers_Question" Association="Self.FK_Answers_Question">
+      <End Role="Question" EntitySet="Question" />
+      <End Role="Answers" EntitySet="Answers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NextQuestion_NextQuestion" Association="Self.FK_NextQuestion_NextQuestion">
+      <End Role="NextQuestion" EntitySet="NextQuestion" />
+      <End Role="NextQuestion1" EntitySet="NextQuestion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NextQuestion_Question" Association="Self.FK_NextQuestion_Question">
+      <End Role="Question" EntitySet="Question" />
+      <End Role="NextQuestion" EntitySet="NextQuestion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NextQuestion_Question1" Association="Self.FK_NextQuestion_Question1">
+      <End Role="Question" EntitySet="Question" />
+      <End Role="NextQuestion" EntitySet="NextQuestion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Question_Questionare" Association="Self.FK_Question_Questionare">
+      <End Role="Questionare" EntitySet="Questionare" />
+      <End Role="Question" EntitySet="Question" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Questionare_Users" Association="Self.FK_Questionare_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Questionare" EntitySet="Questionare" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

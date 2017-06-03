@@ -1,0 +1,15 @@
+﻿
+@{
+    ViewBag.Title = "CreateQuestionare";
+}
+    <div class="container">
+        <h2>Quiz</h2>
+        <form method="post">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" class="form-control" id="name" name="name" placeholder="Enter quiz name">
+            </div>
+            <button type="submit" class="btn btn-primary" formaction=@Url.Action("CreateQuestionare","Profile")>Create quiz</button>
+        </form>
+    </div>
+

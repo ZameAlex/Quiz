@@ -66,6 +66,6 @@ D:\study\C#\AppUnits\FirstWebApp\bin\Microsoft.Owin.Security.OAuth.xml
 D:\study\C#\AppUnits\FirstWebApp\bin\Microsoft.Owin.Security.Google.xml
 D:\study\C#\AppUnits\FirstWebApp\bin\Microsoft.Owin.Security.Twitter.xml
 D:\study\C#\AppUnits\FirstWebApp\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
-D:\study\C#\AppUnits\FirstWebApp\obj\Debug\FirstWebApp.csprojResolveAssemblyReference.cache
 D:\study\C#\AppUnits\FirstWebApp\obj\Debug\FirstWebApp.dll
 D:\study\C#\AppUnits\FirstWebApp\obj\Debug\FirstWebApp.pdb
+D:\study\C#\AppUnits\FirstWebApp\obj\Debug\FirstWebApp.csprojResolveAssemblyReference.cache

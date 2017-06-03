@@ -15,17 +15,18 @@ namespace DataClasses.Repositories
             {
                 result.Questions = qr.GetItems(questionare.ID);
             }
-            
             result.URL = questionare.URL;
             return result;
         }
         private static Questionare ConvertingToDB(Models.Quiz questionare, int ID)
         {
             Questionare result = new Questionare();
-            if(questionare.ID.HasValue)
+            if(questionare.DBID.HasValue)
                 result.ID = (int)questionare.DBID;
             result.IDUser = ID;
             result.Name = questionare.Name;
+            //result.URL = questionare.URL;
+            result.Type = null;
             return result;
         }
 
@@ -87,7 +88,13 @@ namespace DataClasses.Repositories
         {
             using (QuizEntities1 DbContext = new QuizEntities1())
             {
-                DbContext.Questionare.Remove(ConvertingToDB(questionare, ID));
+                Questionare result = DbContext.Questionare.Find(ConvertingToDB(questionare, ID).ID);
+                using (QuestionRepository q = new QuestionRepository())
+                {
+                    foreach (var item in questionare.Questions)
+                        q.DeleteItem(item, (int)questionare.DBID);
+                }
+                    DbContext.Questionare.Remove(result);
                 DbContext.SaveChanges();
             }
         }
@@ -106,7 +113,7 @@ namespace DataClasses.Repositories
 
         public void Dispose()
         {
-            throw new NotImplementedException();
+            
         }
     }
 }

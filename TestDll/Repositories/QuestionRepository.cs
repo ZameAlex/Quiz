@@ -38,7 +38,7 @@ namespace DataClasses.Repositories
         private static Question ConvertingToDB(Models.Question question, int ID)
         {
             Question result = new Question();
-            if (question.ID.HasValue)
+            if (question.DBID.HasValue)
                 result.ID = (int)question.DBID;
             result.IDQuestionare = ID;
             result.Text = question.Text;
@@ -112,11 +112,18 @@ namespace DataClasses.Repositories
             return result;
         }
 
-        public void DeleteItem(Models.Question Question, int ID)
+        public void DeleteItem(Models.Question question, int ID)
         {
             using (QuizEntities1 DbContext = new QuizEntities1())
             {
-                DbContext.Question.Remove(ConvertingToDB(Question, ID));
+                Question result = DbContext.Question.Find(question.DBID);
+                if(result.Type!=3)
+                    using (AnswerRepository an = new AnswerRepository())
+                    {
+                        foreach (var item in question.Answers)
+                            an.DeleteItem(item, (int)question.DBID);
+                    }
+                        DbContext.Question.Remove(result);
                 DbContext.SaveChanges();
             }
         }
@@ -135,7 +142,7 @@ namespace DataClasses.Repositories
 
         public void Dispose()
         {
-            throw new NotImplementedException();
+           
         }
     }
 }

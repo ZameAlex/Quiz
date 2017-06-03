@@ -118,7 +118,6 @@ namespace DataClasses.Repositories
 
         public void Dispose()
         {
-            throw new NotImplementedException();
         }
     }
 }

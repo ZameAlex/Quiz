@@ -5,7 +5,7 @@
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Text" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Text" Type="String" MaxLength="100" FixedLength="true" Unicode="true" Nullable="false" />
     <Property Name="Number" Type="Int32" />
     <NavigationProperty Name="Records" Relationship="Self.FK_Records_Answers" FromRole="Answers" ToRole="Records" />
   </EntityType>
@@ -14,7 +14,7 @@
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Text" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Text" Type="String" MaxLength="100" FixedLength="true" Unicode="true" Nullable="false" />
     <NavigationProperty Name="Records" Relationship="Self.FK_Records_Questions" FromRole="Questions" ToRole="Records" />
   </EntityType>
   <EntityType Name="Quizes">
@@ -22,7 +22,7 @@
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Name" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
     <NavigationProperty Name="Records" Relationship="Self.FK_Records_Quizes" FromRole="Quizes" ToRole="Records" />
   </EntityType>
   <EntityType Name="Records">
@@ -45,19 +45,9 @@
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Name" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
-    <Property Name="Surname" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+    <Property Name="Name" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+    <Property Name="Surname" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
     <NavigationProperty Name="Records" Relationship="Self.FK_Records_Respondents" FromRole="Respondents" ToRole="Records" />
-  </EntityType>
-  <EntityType Name="sysdiagrams">
-    <Key>
-      <PropertyRef Name="diagram_id" />
-    </Key>
-    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="principal_id" Type="Int32" Nullable="false" />
-    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="version" Type="Int32" />
-    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
   </EntityType>
   <Association Name="FK_Records_Answers">
     <End Role="Answers" Type="Self.Answers" Multiplicity="1" />
@@ -113,7 +103,6 @@
     <EntitySet Name="Quizes" EntityType="Self.Quizes" />
     <EntitySet Name="Records" EntityType="Self.Records" />
     <EntitySet Name="Respondents" EntityType="Self.Respondents" />
-    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
     <AssociationSet Name="FK_Records_Answers" Association="Self.FK_Records_Answers">
       <End Role="Answers" EntitySet="Answers" />
       <End Role="Records" EntitySet="Records" />

@@ -5,7 +5,7 @@
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Text" Type="nchar" MaxLength="30" Nullable="false" />
+    <Property Name="Text" Type="nchar" MaxLength="100" Nullable="false" />
     <Property Name="Type" Type="int" Nullable="false" />
     <Property Name="IDQuestion" Type="int" Nullable="false" />
   </EntityType>
@@ -14,7 +14,7 @@
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Answers" Type="nchar" MaxLength="20" />
+    <Property Name="Answers" Type="nchar" MaxLength="100" />
     <Property Name="IDQuestion" Type="int" Nullable="false" />
     <Property Name="IDNextRule" Type="int" />
     <Property Name="IDNextQuestion" Type="int" Nullable="false" />
@@ -24,7 +24,7 @@
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Text" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="Text" Type="nchar" MaxLength="100" Nullable="false" />
     <Property Name="Type" Type="int" Nullable="false" />
     <Property Name="IDQuestionare" Type="int" Nullable="false" />
   </EntityType>
@@ -33,7 +33,7 @@
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Name" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="Name" Type="nchar" MaxLength="50" Nullable="false" />
     <Property Name="IDUser" Type="int" Nullable="false" />
     <Property Name="URL" Type="nchar" MaxLength="30" />
     <Property Name="Type" Type="bit" />
@@ -53,8 +53,8 @@
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Login" Type="nchar" MaxLength="10" Nullable="false" />
-    <Property Name="Password" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="Login" Type="nchar" MaxLength="30" Nullable="false" />
+    <Property Name="Password" Type="nchar" MaxLength="25" Nullable="false" />
     <Property Name="Role" Type="int" Nullable="false" />
   </EntityType>
   <Association Name="FK_Answers_Question">

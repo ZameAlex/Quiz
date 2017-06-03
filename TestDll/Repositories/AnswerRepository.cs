@@ -31,7 +31,7 @@ namespace DataClasses.Repositories
         private static Answers ConvertingToDB(Models.Answer answer, int ID)
         {
             Answers result = new Answers();
-            if(answer.ID.HasValue)
+            if(answer.DBID.HasValue)
                 result.ID = (int)answer.DBID;
             result.IDQuestion = ID;
             result.Text = answer.Text;
@@ -111,7 +111,8 @@ namespace DataClasses.Repositories
         {
             using (QuizEntities1 DbContext = new QuizEntities1())
             {
-                DbContext.Answers.Remove(ConvertingToDB(answer,ID));
+                Answers result = DbContext.Answers.Find(ConvertingToDB(answer, ID).ID);
+                DbContext.Answers.Remove(result);
                 DbContext.SaveChanges();
             }
         }

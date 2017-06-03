@@ -83,9 +83,6 @@
     <Compile Include="AnsweringRepositories\Respondents.cs">
       <DependentUpon>AnswersStructure.tt</DependentUpon>
     </Compile>
-    <Compile Include="AnsweringRepositories\sysdiagrams.cs">
-      <DependentUpon>AnswersStructure.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\Answer.cs" />
     <Compile Include="Models\Question.cs" />
     <Compile Include="Models\Quiz.cs" />
@@ -124,9 +121,6 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Repositories\RuleRepository.cs" />
-    <Compile Include="Repositories\sysdiagrams.cs">
-      <DependentUpon>QuizStructure.tt</DependentUpon>
-    </Compile>
     <Compile Include="Repositories\UserRepository.cs" />
     <Compile Include="Repositories\Users.cs">
       <DependentUpon>QuizStructure.tt</DependentUpon>
@@ -168,6 +162,7 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>QuizStructure.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <None Include="App.Config" />
     <None Include="Repositories\QuizStructure.edmx.diagram">
       <DependentUpon>QuizStructure.edmx</DependentUpon>
     </None>
