@@ -124,6 +124,7 @@ namespace DataClasses.Repositories
                 Answers answer;
                 answer = DbContext.Answers.Find(ID);
                 answer.Text = newAnswer.Text;
+                answer.Type = (int)newAnswer.Type + 1;
                 DbContext.Entry(answer).State = System.Data.Entity.EntityState.Modified;
                 DbContext.SaveChanges();
             }

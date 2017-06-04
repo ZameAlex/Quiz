@@ -108,10 +108,7 @@ namespace FirstWebApp.Controllers
                     {
                         var answer = new Answer();
                         answer.Text = item;
-                        if (res.Id == 0)
-                            answer.Type = QuestionTypes.OneAnswer;
-                        if (res.Id == 1)
-                            answer.Type = QuestionTypes.SomeAnswers;
+                        answer.Type = q.Type;
                         q.Answers.Add(answer);
                         Answers.SaveItem(answer, (int)q.DBID);
                     }
@@ -159,35 +156,55 @@ namespace FirstWebApp.Controllers
             }
             return RedirectToAction("Questions");
         }
-       
+
         [HttpPost]
-        public ActionResult EditQuestion(string text, List<string> answers)
+        public ActionResult EditQuestion(Res res)
         {
-            DataClasses.Models.Question q = TempQuiz.Questions.Where(x => x.DBID == QuestionId).First();
-            q.Text = text;
             using (QuestionRepository DbContext = new QuestionRepository())
             using (AnswerRepository Answers = new AnswerRepository())
             {
-                DbContext.UpdateItem(q, QuestionId);
-                if (answers != null)
-                    foreach (var item in answers)
+                DataClasses.Models.Question q = TempQuiz.Questions.Where(x => x.DBID == QuestionId).First();
+                if (res.Id == 0)
+                    q.Type = QuestionTypes.OneAnswer;
+                if (res.Id == 1)
+                    q.Type = QuestionTypes.SomeAnswers;
+                if (res.Id == 2)
+                    q.Type = QuestionTypes.OpenAnswer;
+                q.Text = res.Text;
+                DbContext.UpdateItem(q, (int)q.DBID);
+
+                if (res.Answers != null)
+                {
+                    int i = 0;
+                    foreach (var item in res.Answers)
                     {
-                        Answer answer;
-                        try
+                        if (i < q.Answers.Count)
                         {
-                            answer = q.Answers.ElementAt(answers.IndexOf(item));
+                            Answer answer = q.Answers.ElementAt(i);
+                            if (item.Trim() != answer.Text.Trim())
+                            {
+                                answer.Text = item;
+                                answer.Type = q.Type;
+                            }
+                            else
+                                answer.Type = q.Type;
+                            Answers.UpdateItem(answer, (int)answer.DBID);
                         }
-                        catch (Exception e)
+                        else
                         {
-                            answer = new Answer();
+                            Answer answer = new Answer();
+                            answer.Text = item;
+                            answer.Type = q.Type;
+                            Answers.SaveItem(answer, (int)q.DBID);
                             q.Answers.Add(answer);
                         }
-                        answer.Text = item;
-                        Answers.UpdateItem(answer, (int)answer.ID);
+                        i++;
                     }
+                }
             }
-            QuestionId = (int)TempQuiz.Questions.SkipWhile(x => x.DBID != QuestionId).ElementAt(1).DBID;
-            return RedirectToAction("EditQuestion");
+
+            Response.StatusCode = (int)HttpStatusCode.OK;
+            return Json("Message sent!", MediaTypeNames.Text.Plain);
         }
 
         public ActionResult SaveQuiz(string text, List<string> answers)

@@ -135,6 +135,7 @@ namespace DataClasses.Repositories
                 Question question;
                 question = DbContext.Question.Find(ID);
                 question.Text = newQuestion.Text;
+                question.Type = (int)newQuestion.Type + 1;
                 DbContext.Entry(question).State = System.Data.Entity.EntityState.Modified;
                 DbContext.SaveChanges();
             }
