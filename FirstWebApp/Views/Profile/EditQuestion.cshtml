@@ -1,16 +1,31 @@
 ﻿@model DataClasses.Models.Question
 @{
-    ViewBag.Title = "EditQuestion";
+    
 }
 
 <script>
-    function AddCheckbox(text)
+
+    function AddSelect(id)
     {
-        return "<div class=\"input-group\"><span class=\"input-group-addon\"><input type=\"checkbox\" aria-label=\"Checkbox for following text input\" disabled></span>            <input type=\"text\" class=\"form-control\" aria-label=\"Text input with checkbox\"  value=\""+text+"\"></div><br \>"
+        if(id)
+        {
+            var select ="<label>&emsp;Go to</label>&emsp;<select type=\"rule\">";
+            var data = @Html.Raw(Json.Encode(ViewData));
+            for(var i=0;i<data.length;i++)
+                select+="<option id=\""+i+"\">"+data[i].Value.Text+"</option>";
+            select+="</select>";
+            return select;
+        }
+        return "";
     }
 
-    function AddRadio(text) {
-        return "<div class=\"input-group\"><span class=\"input-group-addon\"><input type=\"radio\" aria-label=\"Radio button for following text input\" disabled></span>            <input type=\"text\" class=\"form-control\" aria-label=\"Text input with radio button\"  value=\"" + text + "\"></div><br \>"
+    function AddCheckbox(text,id)
+    {
+        return "<div class=\"input-group\"><span class=\"input-group-addon\"><input type=\"checkbox\" aria-label=\"Checkbox for following text input\" disabled></span>            <input type=\"text\" class=\"form-control\" aria-label=\"Text input with checkbox\"  value=\""+text+"\">"+AddSelect(id)+"</div><br \>"
+    }
+
+    function AddRadio(text,id) {
+        return "<div class=\"input-group\"><span class=\"input-group-addon\"><input type=\"radio\" aria-label=\"Radio button for following text input\" disabled></span>            <input type=\"text\" class=\"form-control\" aria-label=\"Text input with radio button\"  value=\"" + text + "\">"+AddSelect(id)+"</div><br \>"
     }
 
     function ChangeAllToR()
@@ -65,11 +80,11 @@
         switch (id) {
             case 0:
                 for(var i=0;i<text.length;i++)
-                    $('.container:last').append(AddRadio(text[i].Text));
+                    $('.container:last').append(AddRadio(text[i].Text,true));
                 break;
             case 1:
                 for(var i=0;i<text.length;i++)
-                    $('.container:last').append(AddCheckbox(text[i].Text));
+                    $('.container:last').append(AddCheckbox(text[i].Text,true));
                 break;
         }
     }
@@ -113,18 +128,16 @@
         var id = document.getElementById('type').selectedIndex;
         switch (id) {
             case 0:
-                $('.container:last').append(AddRadio('option'));
+                $('.container:last').append(AddRadio('option',true));
                 break;
             case 1:
-                $('.container:last').append(AddCheckbox('option'));
+                $('.container:last').append(AddCheckbox('option',true));
                 break;
         }
     })
 </script>
 
-<script>
-    $('#Save').on('click',AddAnswer());
-</script>
+
 
 <script>
     $("#Save").on("click", function () {
@@ -145,10 +158,15 @@
             case 2:
                 break;
         }
+        var rules =[];
+        var r = $('[type=rule]');
+        for(var i =0;i<r.length;i++)
+            rules.push(r[i].selectedIndex);
         var x = {
             Text: document.getElementById('text').value,
             Answers: result,
-            Id:id
+            Id:id,
+            Rule:rules
         };
         $.ajax({
             type: "POST",

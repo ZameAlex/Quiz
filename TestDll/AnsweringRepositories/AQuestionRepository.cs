@@ -1,4 +1,5 @@
 ﻿
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -57,10 +58,15 @@ namespace DataClasses.AnsweringRepositories
 
         public void UpdateItem(Questions newItem, int ID)
         {
+            throw new NotImplementedException();
+        }
+
+        public void UpdateItem(Questions newItem, string Text)
+        {
             using (QuizAnswersEntities1 DbContext = new QuizAnswersEntities1())
             {
                 Questions question;
-                question = DbContext.Questions.Find(ID);
+                question = DbContext.Questions.Where(x => x.Text.Trim() == Text.Trim()).First();
                 question.Text = newItem.Text;
                 DbContext.Entry(question).State = System.Data.Entity.EntityState.Modified;
                 DbContext.SaveChanges();

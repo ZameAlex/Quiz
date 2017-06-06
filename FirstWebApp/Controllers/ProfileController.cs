@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using DataClasses.Repositories;
+using DataClasses.AnsweringRepositories;
 using DataClasses.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
@@ -20,6 +21,7 @@ namespace FirstWebApp.Controllers
             public string Text { get; set; }
             public string[] Answers { get; set; }
             public int Id { get; set; }
+            public int[] Rule { get; set; }
         }
         private static  Quiz TempQuiz;
         private static int QuestionId;
@@ -83,6 +85,18 @@ namespace FirstWebApp.Controllers
                 DbContext.SaveItem(quiz, id);
                 TempQuiz = quiz;
             }
+            using (AQuizRepository DbContext = new AQuizRepository())
+            {
+                Quizes item = new Quizes();
+                item.Name = quiz.Name;
+                DbContext.SaveItem(item, 0);
+            }
+            Res r = new Res();
+            r.Text = "Enter your name, please";
+            r.Id = 2;
+            r.Answers = null;
+            r.Rule = null;
+            CreateQuestion(r);
             return RedirectToAction("Index");
         }
 
@@ -114,7 +128,21 @@ namespace FirstWebApp.Controllers
                     }
                 
             }
-            Response.StatusCode = (int)HttpStatusCode.OK;
+            using (AAnswersRepository A = new AAnswersRepository())
+            using (AQuestionRepository Q = new AQuestionRepository())
+            {
+                DataClasses.AnsweringRepositories.Questions qu = new DataClasses.AnsweringRepositories.Questions();
+                qu.Text = q.Text;
+                Q.SaveItem(qu, 0);
+                foreach (var item in q.Answers)
+                {
+                    DataClasses.AnsweringRepositories.Answers an = new DataClasses.AnsweringRepositories.Answers();
+                    an.Text = item.Text;
+                    an.Number = item.DBID;
+                    A.SaveItem(an, 0);
+                }
+            }
+                Response.StatusCode = (int)HttpStatusCode.OK;
             return Json("Message sent!", MediaTypeNames.Text.Plain);
         }
         
@@ -133,6 +161,10 @@ namespace FirstWebApp.Controllers
         [HttpGet]
         public ActionResult EditQuestion()
         {
+            var temp = TempQuiz.Questions.SkipWhile(x => x.DBID != QuestionId).Skip(1);
+            int i = 0;
+            foreach (var item in temp)
+                ViewData.Add(new KeyValuePair<string, object>(i++.ToString(), item));
             return View(TempQuiz.Questions.Where(x => x.DBID == QuestionId).First());
         }
 
@@ -148,13 +180,22 @@ namespace FirstWebApp.Controllers
         [HttpPost]
         public ActionResult EditQuestionare(string name)
         {
-            if(name!=null)
+            if (name != null)
+            {
+                using (AQuizRepository DbContext = new AQuizRepository())
+                {
+                    Quizes q = new Quizes();
+                    q.Name = name;
+                    DbContext.UpdateItem(q, TempQuiz.Name);
+                }
                 TempQuiz.Name = name;
+            }
             using (QuizRepository DbContext = new QuizRepository())
             {
                 DbContext.UpdateItem(TempQuiz, (int)TempQuiz.DBID);
             }
-            return RedirectToAction("Questions");
+            
+                return RedirectToAction("Questions");
         }
 
         [HttpPost]
@@ -162,8 +203,13 @@ namespace FirstWebApp.Controllers
         {
             using (QuestionRepository DbContext = new QuestionRepository())
             using (AnswerRepository Answers = new AnswerRepository())
+            using (AQuestionRepository qu = new AQuestionRepository())
+            using (AAnswersRepository an = new AAnswersRepository())
             {
                 DataClasses.Models.Question q = TempQuiz.Questions.Where(x => x.DBID == QuestionId).First();
+                DataClasses.AnsweringRepositories.Questions ques = new DataClasses.AnsweringRepositories.Questions();
+                ques.Text = res.Text;
+                qu.UpdateItem(ques, q.Text);
                 if (res.Id == 0)
                     q.Type = QuestionTypes.OneAnswer;
                 if (res.Id == 1)
@@ -189,14 +235,20 @@ namespace FirstWebApp.Controllers
                             else
                                 answer.Type = q.Type;
                             Answers.UpdateItem(answer, (int)answer.DBID);
+                            DataClasses.AnsweringRepositories.Answers a = new DataClasses.AnsweringRepositories.Answers();
+                            an.UpdateItem(a, (int)answer.DBID);
                         }
                         else
                         {
+                            DataClasses.AnsweringRepositories.Answers a = new DataClasses.AnsweringRepositories.Answers();
                             Answer answer = new Answer();
                             answer.Text = item;
                             answer.Type = q.Type;
                             Answers.SaveItem(answer, (int)q.DBID);
                             q.Answers.Add(answer);
+                            a.Text = answer.Text;
+                            a.Number = answer.DBID;
+                            an.SaveItem(a, 0);
                         }
                         i++;
                     }

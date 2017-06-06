@@ -14,7 +14,6 @@ D:\study\C#\AppUnits\FirstWebApp\bin\FirstWebApp.dll.config
 D:\study\C#\AppUnits\FirstWebApp\bin\FirstWebApp.dll
 D:\study\C#\AppUnits\FirstWebApp\bin\FirstWebApp.pdb
 D:\study\C#\AppUnits\FirstWebApp\bin\Antlr3.Runtime.dll
-D:\study\C#\AppUnits\FirstWebApp\bin\DataClasses.dll
 D:\study\C#\AppUnits\FirstWebApp\bin\EntityFramework.dll
 D:\study\C#\AppUnits\FirstWebApp\bin\EntityFramework.SqlServer.dll
 D:\study\C#\AppUnits\FirstWebApp\bin\Microsoft.AspNet.Identity.Core.dll
@@ -69,3 +68,4 @@ D:\study\C#\AppUnits\FirstWebApp\bin\Microsoft.Owin.Security.MicrosoftAccount.xm
 D:\study\C#\AppUnits\FirstWebApp\obj\Debug\FirstWebApp.dll
 D:\study\C#\AppUnits\FirstWebApp\obj\Debug\FirstWebApp.pdb
 D:\study\C#\AppUnits\FirstWebApp\obj\Debug\FirstWebApp.csprojResolveAssemblyReference.cache
+D:\study\C#\AppUnits\FirstWebApp\bin\DataClasses.dll

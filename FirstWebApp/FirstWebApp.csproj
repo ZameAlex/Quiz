@@ -173,6 +173,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AnswerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ProfileController.cs" />
@@ -316,6 +317,7 @@
     <Content Include="Views\Profile\EditQuestionare.cshtml" />
     <Content Include="Views\Profile\EditQuestion.cshtml" />
     <Content Include="Views\Profile\Questions.cshtml" />
+    <Content Include="Views\Answer\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

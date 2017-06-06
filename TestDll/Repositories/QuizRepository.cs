@@ -69,6 +69,14 @@ namespace DataClasses.Repositories
             return result;
         }
 
+        public Models.Quiz GetItemByURL(string URL)
+        {
+            using (QuizEntities1 DbContext = new QuizEntities1())
+            {
+                return ConvertingFromDB(DbContext.Questionare.Where(x => x.URL.Trim() == URL.Trim()).First());
+            }
+        }
+
         public ICollection<Models.Quiz> GetItems(int ID)
         {
             List<Questionare> questionares = new List<Questionare>();

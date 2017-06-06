@@ -1,0 +1,150 @@
+﻿@model DataClasses.Models.Question
+@{
+
+}
+
+<script>
+
+    
+
+    function AddCheckbox(text,id)
+    {
+        return "<div class=\"input-group\"><span class=\"input-group-addon\"><input type=\"checkbox\" aria-label=\"Checkbox for following text input\" id=\""+id+"\" >   </span>         <input type=\"text\" class=\"form-control\" aria-label=\"Text input with checkbox\" disabled value=\""+text+"\"></div><br \>"
+    }
+
+    function AddRadio(text,id) {
+        return "<div class=\"input-group\"><span class=\"input-group-addon\"><input type=\"radio\" aria-label=\"Radio button for following text input\"id=\""+id+"\"  ></span>           <input type=\"text\" class=\"form-control\" aria-label=\"Text input with radio button\" disabled  value=\"" + text + "\"></div><br \>"
+    }
+
+    function AddOpen()
+    {
+        return "<input type=\"text\" class=\"form-control\" id=\"answ\" name=\"text\" placeholder=\"Enter amswer\">";
+    }
+
+</script>
+
+
+<script>
+    window.onload=function(){
+        var text = @Html.Raw(Json.Encode(Model));
+        switch (text.Type) {
+            case 0:
+                for(var i=0;i<text.Answers.length;i++)
+                    $('.container:last').append(AddRadio(text.Answers[i].Text,text.Answers[i].DBID));
+                break;
+            case 1:
+                for(var i=0;i<text.Answers.length;i++)
+                    $('.container:last').append(AddCheckbox(text.Answers[i].Text,text.Answers[i].DBID));
+                break;
+            case 2:
+                $('.container:last').append(AddOpen());
+                break;
+        }
+        var but =@Html.Raw(Json.Encode(ViewData));
+        if(but[0].Value)
+        {
+             $("#Save").text("Finish");
+        }
+
+        $('[type=checkbox]').change(function(){
+            document.getElementById("Save").disabled=true;
+            var boxes = $('[type=checkbox]');
+            for(var i=0;i<boxes.length;i++)
+                if(boxes[i].checked)
+                {
+                    document.getElementById("Save").disabled=false;
+                    break;
+                }
+        });
+
+        $('[type=radio]').change(function(){
+            document.getElementById("Save").disabled=false;
+            var boxes = $('[type=radio]');
+            for(var i=0;i<boxes.length;i++)
+                boxes[i].checked=false;
+            this.checked=true;
+        });
+
+        $('#answ.form-control').on("input",function(){
+            $("#Save").disabled=true;
+            if(document.getElementById("answ").value!="")
+                document.getElementById("Save").disabled=false;
+        });
+    }
+
+
+</script>
+
+<div class="container">
+
+        <h2>Quiz</h2>
+        <div class="form-group">
+            <label for="name">Question:</label>
+            <input type="text" class="form-control" id="text" name="text" value="@Model.Text" disabled>
+        </div>
+        <label for="comment">Answer:</label>
+        <div class="container">
+            @if (Model.Type == DataClasses.Models.QuestionTypes.OpenAnswer)
+            {
+                <label>Open answer</label>
+            }
+        </div>
+        <br />
+        <br />
+    </div>
+
+
+<button type="button" class="btn btn-primary" id="Save" disabled>Next</button>
+
+<script>
+    $("#Save").on("click", function () {
+        var id = @Html.Raw(Json.Encode(Model.Type));
+        var result = [];
+
+        switch (id) {
+            case 0:
+                var d = $('[type=radio]');
+                for (var i = 0; i < d.length; i++){
+                    if(d[i].checked)
+                        result.push(d[i].id);
+                }
+
+                break;
+            case 1:
+                var d = $('[type=checkbox]');
+                for (var i = 0; i < d.length; i++){
+                    if(d[i].checked)
+                        result.push(d[i].id);
+                }
+                break;
+            case 2:
+                var d = document.getElementById("answ").value;
+                result.push(d);
+                break;
+        }
+        var x = {
+            Answers: result
+        };
+        var but =@Html.Raw(Json.Encode(ViewData));
+        if(!but[0].Value)
+        {
+
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("Index","Answer")',
+                data: x,
+                success: function () { window.location.href = '/Answer/Next/12'; }
+            });
+        }
+        else{
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("Index","Answer")',
+                data: x,
+                success: function () { window.location.href = '/Answer/Finish/12'; }
+            });
+        }
+    })
+
+
+</script>

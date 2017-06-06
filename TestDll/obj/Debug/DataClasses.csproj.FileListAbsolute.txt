@@ -7,3 +7,4 @@ D:\study\C#\AppUnits\TestDll\bin\Debug\DataClasses.pdb
 D:\study\C#\AppUnits\TestDll\obj\Debug\DataClasses.dll
 D:\study\C#\AppUnits\TestDll\obj\Debug\DataClasses.pdb
 D:\study\C#\AppUnits\TestDll\bin\Debug\DataClasses.dll.config
+D:\study\C#\AppUnits\TestDll\obj\Debug\DataClasses.csprojResolveAssemblyReference.cache

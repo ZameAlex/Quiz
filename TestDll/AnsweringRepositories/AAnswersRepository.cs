@@ -60,9 +60,8 @@ namespace DataClasses.AnsweringRepositories
             using (QuizAnswersEntities1 DbContext = new QuizAnswersEntities1())
             {
                 Answers answer;
-                answer = DbContext.Answers.Find(ID);
+                answer = DbContext.Answers.Where(x => x.Number == ID).First();
                 answer.Text = newItem.Text;
-                answer.Number = newItem.Number;
                 DbContext.Entry(answer).State = System.Data.Entity.EntityState.Modified;
                 DbContext.SaveChanges();
             }

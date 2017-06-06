@@ -55,12 +55,12 @@ namespace DataClasses.AnsweringRepositories
             }
         }
 
-        public void UpdateItem(Quizes newItem, int ID)
+        public void UpdateItem(Quizes newItem, string Name)
         {
             using (QuizAnswersEntities1 DbContext = new QuizAnswersEntities1())
             {
                 Quizes question;
-                question = DbContext.Quizes.Find(ID);
+                question = DbContext.Quizes.Where(x => x.Name.Trim() == Name.Trim()).First();
                 question.Name = newItem.Name;
                 DbContext.Entry(question).State = System.Data.Entity.EntityState.Modified;
                 DbContext.SaveChanges();

@@ -4,12 +4,12 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="5580d6169ffe40e8b536cef634a2ca72" Name="Diagram1">
-        <EntityTypeShape EntityType="QuizAnswersModel1.Answers" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="QuizAnswersModel1.Questions" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="QuizAnswersModel1.Quizes" Width="1.5" PointX="0.75" PointY="7.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="QuizAnswersModel1.Records" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="QuizAnswersModel1.Respondents" Width="1.5" PointX="0.75" PointY="9.5" IsExpanded="true" />
+      <Diagram DiagramId="5580d6169ffe40e8b536cef634a2ca72" Name="Diagram1" ZoomLevel="100">
+        <EntityTypeShape EntityType="QuizAnswersModel1.Answers" Width="1.5" PointX="1.625" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuizAnswersModel1.Questions" Width="1.5" PointX="7" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuizAnswersModel1.Quizes" Width="1.5" PointX="4.125" PointY="0.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuizAnswersModel1.Records" Width="1.5" PointX="4.125" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuizAnswersModel1.Respondents" Width="1.5" PointX="4.125" PointY="4.75" IsExpanded="true" />
         <AssociationConnector Association="QuizAnswersModel1.FK_Records_Answers" ManuallyRouted="false" />
         <AssociationConnector Association="QuizAnswersModel1.FK_Records_Questions" ManuallyRouted="false" />
         <AssociationConnector Association="QuizAnswersModel1.FK_Records_Quizes" ManuallyRouted="false" />
